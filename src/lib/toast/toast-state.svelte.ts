@@ -1,5 +1,5 @@
 import { getContext, setContext, onDestroy } from 'svelte';
-import type { Toast } from './types';
+import type { Toast } from './types.ts';
 
 export class ToastState {
   toasts = $state<Toast[]>([]);

@@ -5,6 +5,7 @@
     { url: '/examples/audio', text: 'Audio' },
     { url: '/examples/tile-wall', text: 'Tiled Layout' },
     { url: '/examples/perspective-view', text: 'Pan and Zoom'},
+    { url: '/examples/toast', text: 'Toast!'},
   ]
 </script>
 
