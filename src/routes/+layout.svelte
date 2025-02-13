@@ -6,6 +6,7 @@
     { url: '/examples/tile-wall', text: 'Tiled Layout' },
     { url: '/examples/perspective-view', text: 'Pan and Zoom'},
     { url: '/examples/toast', text: 'Toast!'},
+    { url: '/examples/openstreetmap', text: 'OpenStreetMap'},
   ]
 </script>
 
