@@ -31,6 +31,16 @@
     opacity: number;
   }
 
+  export type DrawEvent = null | undefined | {} |
+  {
+    type: 'line',
+    s: { x: number, y: number, z?: number, pressure?: number },
+    e: { x: number, y: number, z?: number, pressure?: number },
+  } |
+  {
+    type: 'clear',
+  };
+
   export const defaultBrushStyle: BrushProperty = {
     color: '#ff0000',
     size: 10,
@@ -40,12 +50,12 @@
   let {
     brush,
 
-    onCanvasUpdate = () => {},
+    onDraw = () => {},
     onStroke = () => {},
   } : {
     brush: BrushProperty,
 
-    onCanvasUpdate?: (event: { tiles: TileBitmap[] }) => void,
+    onDraw?: (event: DrawEvent) => void,
   } = $props();
 
   brush = {...defaultBrushStyle, ...brush};
@@ -93,15 +103,6 @@
     ctx.stroke();
   }
 
-  export function stroke(event: { type: string, [k: string]: object }) {
-    switch(event.type) {
-      case 'line':
-        drawLine(event.s, event.e);
-        break;
-    }
-  }
-
-
   onMount(() => {
     canvas.width = CANVASWIDTH;
     canvas.height = CANVASHEIGHT;
@@ -138,7 +139,7 @@
     });
 
     const emitSub = pointerMove$.subscribe(({ s, e }) => {
-      onStroke({ type:'line', s, e });
+      onDraw({ type:'line', s, e });
     });
 
     return (() => {
@@ -151,11 +152,25 @@
   export function clear() {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    onDraw({ type: 'clear' });
   }
 
   export function getImage() {
     return canvas.toDataURL('image/png');
   }
+
+  export function draw(event: { type: string, [k: string]: object }) {
+    switch(event.type) {
+      case 'line':
+        drawLine(event.s, event.e);
+        break;
+      case 'clear':
+        clear();
+        break;
+    }
+  }
+
+
 </script>
 
 <style>

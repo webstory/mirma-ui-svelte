@@ -14,22 +14,9 @@
     whiteboard.clear();
   }
 
-  function handleCanvasHash(event) {
-    const { hashes: _hashes, elapsed } = event;
-    performance.hashCalculationTime = elapsed;
-    hashes = _hashes;
-  }
-
-  function handleCanvasUpdate(event) {
-    const { tiles } = event;
-    updatedTile.x = tiles[0].x;
-    updatedTile.y = tiles[0].y;
-    tileObjectUrl = tiles[0].data;
-  }
-
-  function handleCanvasStroke(event) {
+  function handleCanvasDraw(event) {
     console.log(event);
-    whiteboard2?.stroke(event);
+    whiteboard2?.draw(event);
   }
 
 
@@ -41,48 +28,17 @@
 <div class="container">
   <aside>
     <button onclick={clear}>Clear</button>
-    <div>
-      <h4>Performance</h4>
-      <p>Hash calculation time: {performance.hashCalculationTime.toFixed(2)} ms</p>
-      <div class="updated-tiles">
-        <h4>Updated tiles</h4>
-        <pre>{updatedTile.x} / {updatedTile.y}</pre>
-        <img src={tileObjectUrl} alt="Tile object" />
-        <p>Chunk size: {tileObjectUrl.length}</p>
-        <textarea readonly>DataURL: {tileObjectUrl}</textarea>
-      </div>
-    </div>
   </aside>
   <main>
     <div class="panel">
     <h2>Main</h2>
     <Whiteboard bind:this={whiteboard}
-      onCanvasUpdate={handleCanvasUpdate}
-      onStroke={handleCanvasStroke}
+      onDraw={handleCanvasDraw}
     />
     </div>
     <div class="panel">
     <h2>Cloned</h2>
     <Whiteboard bind:this={whiteboard2} />
-    </div>
-    <div class="float-dock">
-      <h4>Hash array</h4>
-      <div class="hash-map">
-        {#each hashes as { level, x, y, width, height, hash }}
-          <div
-            style:position="absolute"
-            style:z-ndex={level}
-            style:left={x + 'px'}
-            style:top={y + 'px'}
-            style:width={width + 'px'}
-            style:height={height + 'px'}
-            style:font-size={Math.floor(12 / level) + 'em'}
-            style:border="1px solid black">
-            <span>{hash}</span>
-          </div>
-        {/each}
-
-      </div>
     </div>
   </main>
 </div>
