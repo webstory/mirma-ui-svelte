@@ -7,6 +7,7 @@
     { url: '/examples/perspective-view', text: 'Pan and Zoom'},
     { url: '/examples/toast', text: 'Toast!'},
     { url: '/examples/openstreetmap', text: 'OpenStreetMap'},
+    { url: '/examples/whiteboard', text: 'Whiteboard'},
   ]
 </script>
 
