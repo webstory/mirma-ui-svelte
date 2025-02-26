@@ -21,10 +21,12 @@
   }
 
   function cloneWhiteboard() {
+    const dataURL = whiteboard.toDataURL();
+    console.log("DataURL length: ", dataURL.length);
     whiteboard2?.clear();
     whiteboard2?.draw({
       type: 'image',
-      objectURL: whiteboard.toDataURL(),
+      src: dataURL,
     });
   }
 

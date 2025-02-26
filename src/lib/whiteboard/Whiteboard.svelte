@@ -42,7 +42,7 @@
   } |
   {
     type: 'image',
-    objectURL?: string,
+    src: string,
   }
   ;
 
@@ -161,14 +161,14 @@
   }
 
   export function toDataURL() {
-    return canvas.toDataURL('image/png');
+    return canvas.toDataURL('image/webp', 0.7);
   }
 
-  export function replaceImage(objectURL: string) {
+  export function replaceImage(dataURL: string) {
     const ctx = canvas.getContext('2d');
 
     const img = new Image();
-    img.src = objectURL;
+    img.src = dataURL;
     img.onload = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0);
@@ -186,7 +186,7 @@
         break;
 
       case 'image':
-        replaceImage(event.objectURL);
+        replaceImage(event.src);
         break;
     }
   }
