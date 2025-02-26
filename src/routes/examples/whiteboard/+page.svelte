@@ -8,6 +8,8 @@
   let updatedTile = $state({ x: 0, y: 0 });
   let tileObjectUrl = $state('');
 
+  let whiteboard2: Whiteboard;
+
   function clear() {
     whiteboard.clear();
   }
@@ -27,7 +29,11 @@
 
   function handleCanvasStroke(event) {
     console.log(event);
+    whiteboard2?.stroke(event);
   }
+
+
+
 </script>
 
 <h1>Whiteboard</h1>
@@ -48,10 +54,17 @@
     </div>
   </aside>
   <main>
+    <div class="panel">
+    <h2>Main</h2>
     <Whiteboard bind:this={whiteboard}
       onCanvasUpdate={handleCanvasUpdate}
       onStroke={handleCanvasStroke}
     />
+    </div>
+    <div class="panel">
+    <h2>Cloned</h2>
+    <Whiteboard bind:this={whiteboard2} />
+    </div>
     <div class="float-dock">
       <h4>Hash array</h4>
       <div class="hash-map">
@@ -91,6 +104,13 @@
   main {
     flex: 1 1 auto;
     padding: 1em;
+  }
+
+  .panel {
+    width: 100%;
+    max-width: 960px;
+    height: 512px;
+    border: 1px solid #000;
   }
 
   .float-dock {

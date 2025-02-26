@@ -93,6 +93,14 @@
     ctx.stroke();
   }
 
+  export function stroke(event: { type: string, [k: string]: object }) {
+    switch(event.type) {
+      case 'line':
+        drawLine(event.s, event.e);
+        break;
+    }
+  }
+
 
   onMount(() => {
     canvas.width = CANVASWIDTH;
