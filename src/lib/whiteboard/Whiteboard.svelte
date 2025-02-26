@@ -39,7 +39,12 @@
   } |
   {
     type: 'clear',
-  };
+  } |
+  {
+    type: 'image',
+    objectURL?: string,
+  }
+  ;
 
   export const defaultBrushStyle: BrushProperty = {
     color: '#ff0000',
@@ -155,8 +160,19 @@
     onDraw({ type: 'clear' });
   }
 
-  export function getImage() {
+  export function toDataURL() {
     return canvas.toDataURL('image/png');
+  }
+
+  export function replaceImage(objectURL: string) {
+    const ctx = canvas.getContext('2d');
+
+    const img = new Image();
+    img.src = objectURL;
+    img.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+    };
   }
 
   export function draw(event: { type: string, [k: string]: object }) {
@@ -164,11 +180,18 @@
       case 'line':
         drawLine(event.s, event.e);
         break;
+
       case 'clear':
         clear();
         break;
+
+      case 'image':
+        replaceImage(event.objectURL);
+        break;
     }
   }
+
+
 
 
 </script>

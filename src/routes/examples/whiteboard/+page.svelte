@@ -7,6 +7,7 @@
   let hashes = $state([]);
   let updatedTile = $state({ x: 0, y: 0 });
   let tileObjectUrl = $state('');
+  let sync = $state(true);
 
   let whiteboard2: Whiteboard;
 
@@ -16,7 +17,15 @@
 
   function handleCanvasDraw(event) {
     console.log(event);
-    whiteboard2?.draw(event);
+    if(sync) whiteboard2?.draw(event);
+  }
+
+  function cloneWhiteboard() {
+    whiteboard2?.clear();
+    whiteboard2?.draw({
+      type: 'image',
+      objectURL: whiteboard.toDataURL(),
+    });
   }
 
 
@@ -26,8 +35,13 @@
 <h1>Whiteboard</h1>
 
 <div class="container">
-  <aside>
+  <aside class="toolbar">
     <button onclick={clear}>Clear</button>
+    <label>
+      <input type="checkbox" bind:checked={sync} />
+      Sync
+    </label>
+    <button onclick={cloneWhiteboard}>Clone</button>
   </aside>
   <main>
     <div class="panel">
@@ -55,7 +69,14 @@
     width: 200px;
     padding: 1em;
     background: hsl(0, 0%, 95%);
+
+    &.toolbar {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
   }
+
 
   main {
     flex: 1 1 auto;
