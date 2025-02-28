@@ -4,13 +4,13 @@
   let {
     tileWidth = 200,
     tileHeight = 200,
-    panels = [],
-    template,
+
+    children,
   } : {
     tileWidth: number,
     tileHeight: number,
-    panels: Snippet[],
-    template: (props: any) => Snippet
+
+    children?: Snippet,
   } = $props();
 
   let container: HTMLDivElement | null = null;
@@ -25,11 +25,7 @@
 </script>
 
 <div class="tile-container" bind:this={container}>
-  {#each panels as props, idx (props?.id ?? idx)}
-    <div class="tile">
-      {@render template(props)}
-    </div>
-  {/each}
+  {@render children?.()}
 </div>
 
 <style>
@@ -39,18 +35,10 @@
     overflow: auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--width), 1fr));
+    grid-auto-rows: var(--height);
     gap: 1rem;
 
     --width: 200px;
     --height: 200px;
-  }
-
-  .tile {
-    position: relative;
-    width: var(--width);
-    height: var(--height);
-    border: none;
-    border-radius: 5px;
-    overflow: hidden;
   }
 </style>

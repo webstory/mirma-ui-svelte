@@ -32,15 +32,14 @@
     <TileWall
       {tileWidth}
       {tileHeight}
-      {panels}
     >
-      {#snippet template(props)}
+      {#each panels as props, idx (props[1])}
         <div class="tile" style="background-image: url({props[0]})">
           <div class="tile-content">
             <div class="tile-title">{props[1]}</div>
           </div>
         </div>
-      {/snippet}
+      {/each}
     </TileWall>
   </ResizableWindow>
 </div>
@@ -49,7 +48,7 @@
   <button onclick={addTile}>Add Tile</button>
   <div class="row">
     <label for="tileWidth">Tile Width</label>
-    <input name="tileWidth" type="range" min="200" max="1920" bind:value={tileWidth} />
+    <input name="tileWidth" type="range" min="100" max="1920" bind:value={tileWidth} />
   </div>
 </section>
 
