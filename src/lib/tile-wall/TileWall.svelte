@@ -34,7 +34,7 @@
     height: 100%;
     overflow: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--width), 1fr));
+    grid-template-columns: repeat(auto-fill, var(--width));
     grid-auto-rows: var(--height);
     gap: 1rem;
 
