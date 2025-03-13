@@ -8,6 +8,7 @@
     { url: '/examples/toast', text: 'Toast!'},
     { url: '/examples/openstreetmap', text: 'OpenStreetMap'},
     { url: '/examples/whiteboard', text: 'Whiteboard'},
+    { url: '/examples/webrtc-voice', text: 'WebRTC Voice Call'},
   ]
 </script>
 
