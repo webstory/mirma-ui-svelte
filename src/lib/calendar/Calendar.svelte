@@ -16,6 +16,18 @@
 </script>
 
 <script lang="ts">
+  /*
+  모양 이거와 비슷하게 맞춰야 합니다.
+  https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRbW5AwLYJGqM5w8NRJoONAf5RETV1VxfsS8HPDVt9EYgZgdygW0fj6nbQcAWyuIs__hkRyBP3kwlL_/pubhtml#
+
+  여기서 달력 세로 붙임형으로(행사 달력(세로 붙임형) 탭)
+
+  현재 캘린더는 "행사 달력(세로형)"에 더 가깝습니다.
+
+  공휴일 정보는 여기서
+  https://www.data.go.kr/data/15012690/openapi.do
+  */
+
   import { onMount } from "svelte";
 
   let {
