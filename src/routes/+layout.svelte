@@ -9,6 +9,7 @@
     { url: '/examples/openstreetmap', text: 'OpenStreetMap'},
     { url: '/examples/whiteboard', text: 'Whiteboard'},
     { url: '/examples/webrtc-voice', text: 'WebRTC Voice Call'},
+    { url: '/examples/calendar', text: 'Calendar'},
   ]
 </script>
 
