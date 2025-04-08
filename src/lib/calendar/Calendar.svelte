@@ -74,8 +74,6 @@
     return new Date(displayYear, displayMonth + 1, 0).getDate();
   });
 
-
-
   const calendarItems = $derived.by(() => {
     const items: CalendarItemInner[] = [];
     events.forEach((event) => {
@@ -132,22 +130,27 @@
       <div class={day.toLocaleLowerCase()}>{day}</div>
     {/each}
   </div>
-  <div class="calendar-grid">
-    <!-- skip until day 1 is match -->
-    {#each Array(firstDayOfWeek) as _}
-      <div class="empty"></div>
-    {/each}
-    {#each Array(daysInMonth) as _, index}
-      {@const _today = new Date(displayYear, displayMonth, index + 1)}
-      <!-- svelte-ignore a11y_click_events_have_key_events -->
-      <!-- svelte-ignore a11y_no_static_element_interactions -->
-      <div class="calendar-day" onclick={() => onDateClick(new Date(_today.getFullYear(), _today.getMonth(), index + 1))}>
-        {index + 1}
-        {#each getCalendarItemToday(_today) as event}
-          <div class="event" onclick={(e) => { e.stopPropagation(); onEventClick(event) }}>{event.title}</div>
-        {/each}
-      </div>
-    {/each}
+  <div class="calendar-layers">
+    <div class="calendar-grid layer">
+      <!-- skip until day 1 is match -->
+      {#each Array(firstDayOfWeek) as _}
+        <div class="empty"></div>
+      {/each}
+      {#each Array(daysInMonth) as _, index}
+        {@const _today = new Date(displayYear, displayMonth, index + 1)}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <div class="calendar-day" onclick={() => onDateClick(new Date(_today.getFullYear(), _today.getMonth(), index + 1))}>
+          {index + 1}
+          {#each getCalendarItemToday(_today) as event}
+            <div class="event" onclick={(e) => { e.stopPropagation(); onEventClick(event) }}>{event.title}</div>
+          {/each}
+        </div>
+      {/each}
+    </div>
+    <div class="calendar-week-grid layer">
+
+    </div>
   </div>
 </div>
 
@@ -159,73 +162,91 @@
     width: 100%;
     max-width: 600px;
     margin: auto;
-  }
 
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #f0f0f0;
-  }
+    .calendar-layers {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
 
-  .day-of-week {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    background-color: #f0f0f0;
-    padding: 10px 0;
+    .layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+    }
 
-    & > div {
-      text-align: center;
-      font-weight: bold;
+
+    .calendar-header {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #f0f0f0;
     }
 
-    div.sun {
-      color: red;
+    .day-of-week {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background-color: #f0f0f0;
+      padding: 10px 0;
+
+      & > div {
+        text-align: center;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      div.sun {
+        color: red;
+      }
+
+      div.sat {
+        color: blue;
+      }
     }
 
-    div.sat {
-      color: blue;
+    .calendar-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
     }
+
+    .calendar-day {
+      position: static;
+      padding: 2px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .event {
+      background-color: #007bff;
+      color: white;
+      padding: 5px;
+      margin-top: 5px;
+      position: absolute;
+      width: 42.8571%;
+    }
+
+    .event:hover {
+      background-color: #0056b3;
+    }
+
+    .calendar-day:hover {
+      background-color: #f0f0f0;
+      cursor: pointer;
+    }
+
+    .calendar-day:hover .event {
+      background-color: #0056b3;
+    }
+
+    .calendar-day:hover .event:hover {
+      background-color: #004085;
+    }
+
   }
-
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1px;
-  }
-
-  .calendar-day {
-    padding: 2px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
-
-  .event {
-    background-color: #007bff;
-    color: white;
-    padding: 5px;
-    margin-top: 5px;
-  }
-
-  .event:hover {
-    background-color: #0056b3;
-  }
-
-  .calendar-day:hover {
-    background-color: #f0f0f0;
-    cursor: pointer;
-  }
-
-  .calendar-day:hover .event {
-    background-color: #0056b3;
-  }
-
-  .calendar-day:hover .event:hover {
-    background-color: #004085;
-  }
-
-
 </style>
