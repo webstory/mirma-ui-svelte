@@ -62,7 +62,7 @@ async function main() {
           date: isoDate,
           dayofWeek: dayOfWeek,
           name: dateName,
-          isHoliday: dateKind === '1' || dateKind === '2'
+          isHoliday: dateKind === '01' || dateKind === '02'
         };
         holidays.push(holiday);
       }

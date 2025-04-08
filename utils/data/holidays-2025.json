@@ -3,96 +3,96 @@
     "date": "2025-01-01",
     "dayofWeek": 3,
     "name": "1월1일",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-01-27",
     "dayofWeek": 1,
     "name": "임시공휴일",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-01-28",
     "dayofWeek": 2,
     "name": "설날",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-01-29",
     "dayofWeek": 3,
     "name": "설날",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-01-30",
     "dayofWeek": 4,
     "name": "설날",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-03-01",
     "dayofWeek": 6,
     "name": "삼일절",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-03-03",
     "dayofWeek": 1,
     "name": "대체공휴일",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-05-05",
     "dayofWeek": 1,
     "name": "어린이날",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-05-05",
     "dayofWeek": 1,
     "name": "부처님오신날",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-05-06",
     "dayofWeek": 2,
     "name": "대체공휴일",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-10-03",
     "dayofWeek": 5,
     "name": "개천절",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-10-05",
     "dayofWeek": 0,
     "name": "추석",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-10-06",
     "dayofWeek": 1,
     "name": "추석",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-10-07",
     "dayofWeek": 2,
     "name": "추석",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-10-08",
     "dayofWeek": 3,
     "name": "대체공휴일",
-    "isHoliday": false
+    "isHoliday": true
   },
   {
     "date": "2025-10-09",
     "dayofWeek": 4,
     "name": "한글날",
-    "isHoliday": false
+    "isHoliday": true
   }
 ]
