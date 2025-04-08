@@ -194,11 +194,11 @@
   .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
+    gap: 1px;
   }
 
   .calendar-day {
-    padding: 10px;
+    padding: 2px;
     border: 1px solid #ccc;
     text-align: center;
   }

@@ -6,9 +6,9 @@
 
   let holidays = []; // https://www.data.go.kr/data/15012690/openapi.do
   let events = [
-    { period: ["2025-03-03", "2025-03-04"], title: "Event 1" },
-    { period: ["2025-03-15", "2025-03-17"], title: "Event 2" },
-    { period: ["2025-03-20", "2025-03-20"], title: "Event 3" },
+    { period: ["2025-04-03", "2025-04-04"], title: "Event 1" },
+    { period: ["2025-04-15", "2025-04-17"], title: "Event 2" },
+    { period: ["2025-04-20", "2025-04-20"], title: "Event 3" },
   ];
 
   function handleCalendarEventClick(event) {
