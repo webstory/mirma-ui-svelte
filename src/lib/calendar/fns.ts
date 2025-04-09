@@ -19,7 +19,7 @@ export function buildCalendar(year: number, locale: string = 'en-US') {
 
   const days: CalendarDay[] = [];
 
-  while (day.getFullYear() <= year) {
+  while (day.getFullYear() <= year || day.getDay() !== 0) {
     const week = getWeek(day);
     days.push({
       year: day.getFullYear(),
